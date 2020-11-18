@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-4 offset-2">
                 <div>
-                    <h3>{{ $post->user->name }}</h3>
+                    <h2>{{ $post->user->name }}</h2>
                 </div>
             </div>
             <div class="col-8 offset-2">

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="pt-4 font-weight-bold" class="card-header">{{ $user->name }}</div>
-    <div>{{ $user->profile->description ?? ''}}</div>
+    <h1 class="pt-4 font-weight-bold" class="card-header">{{ $user->name }}</h1>
+    <h3>{{ $user->profile->description ?? ''}}</h3>
     <div><strong>{{ $user->posts->count() }}</strong> Posts</div>
     <div class="container">
         <div class="row justify-content-center">
@@ -21,7 +21,7 @@
 
                             @foreach($user->posts as $post)
                                 <div class="col-12 pb-2">
-                                    <a href="/p/{{ $post->id }}">
+                                    <a href="/p/{{ $post->id }}" class="link">
                                         <h3>
                                             <strong>
                                                 {{ $post->title }}
@@ -30,15 +30,15 @@
                                     </a>
                                 </div>
                                 <div class="col-12 pb-2">
-                                    <a href="/p/{{ $post->id }}">
+                                    <a class="link" href="/p/{{ $post->id }}">
                                         {{ $post->post }}
                                     </a>
                                 </div>
-                                <div class="col-12 pb-4">
+                                    <!-- <div class="col-12 pb-4">
                                     <a href="/p/{{ $post->id }}">
-                                    <img src="/storage/{{ $post->image }}" class="w-100">
+                                    <img src="/storage/{{ $post->image }}">
                                     </a>
-                                </div>
+                                </div> -->
                             @endforeach
 
 

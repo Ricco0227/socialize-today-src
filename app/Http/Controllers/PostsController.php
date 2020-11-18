@@ -25,18 +25,26 @@ class PostsController extends Controller
             'post' => 'required',
             'image' => ['image'],
         ]);
-
-        $imagePath = request('image')->store('image_uploads', 'public');
-
-        $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
-        $image->save();
+        if (request()->hasFile('image')) {
+            $imagePath = request('image')->store('image_uploads', 'public');
+            $image = Image::make(public_path("storage/{$imagePath}"))->fit(1200, 1200);
+            $image->save();
 
         auth()->user()->posts()->create([
             'title' => $data['title'],
             'post' => $data['post'],
             'image' => $imagePath,
         ]);
+        } else {
+            $imagePath = 'image_uploads/NoImage.png';
 
+            auth()->user()->posts()->create([
+                'title' => $data['title'],
+                'post' => $data['post'],
+                'image' => $imagePath,
+
+        ]);
+        }
         return redirect('/user/' . auth()->user()->id);
 
     }

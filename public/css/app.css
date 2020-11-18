@@ -10903,3 +10903,9 @@ a.text-dark:focus {
   }
 }
 
+  .link {
+    color: black;
+    text-decoration: none;
+    background-color: white;
+  }
+
